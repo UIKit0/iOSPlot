@@ -19,10 +19,10 @@
 		F83260AA1363D8170045F9DC /* back_button.png in Resources */ = {isa = PBXBuildFile; fileRef = F83260A81363D8170045F9DC /* back_button.png */; };
 		F83260AB1363D8170045F9DC /* back_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F83260A91363D8170045F9DC /* back_button@2x.png */; };
 		F83260C21363D91E0045F9DC /* PieChartViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = F83260C11363D91E0045F9DC /* PieChartViewController2.m */; };
-		F87DE41A1370D68300347F69 /* PCHalfPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = F87DE4191370D68300347F69 /* PCHalfPieChart.m */; };
+		F87DE41A1370D68300347F69 /* PCHalfPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = F87DE4191370D68300347F69 /* PCHalfPieChart.m */; settings = {COMPILER_FLAGS = "-w"; }; };
 		F87DE41D1370D82D00347F69 /* HalfPieChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F87DE41C1370D82D00347F69 /* HalfPieChartViewController.m */; };
 		F88CC4C813684F0E0096327F /* PCLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = F88CC4C713684F0E0096327F /* PCLineChartView.m */; };
-		F88CC4D313684FD30096327F /* LineChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F88CC4D213684FD30096327F /* LineChartViewController.m */; };
+		F88CC4D313684FD30096327F /* LineChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F88CC4D213684FD30096327F /* LineChartViewController.m */; settings = {COMPILER_FLAGS = "-w"; }; };
 		F897D6EE13630F560025FE6E /* sample_piechart_data.plist in Resources */ = {isa = PBXBuildFile; fileRef = F897D6ED13630F560025FE6E /* sample_piechart_data.plist */; };
 		F897D6F113630FD40025FE6E /* PCPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = F897D6F013630FD40025FE6E /* PCPieChart.m */; };
 		F897D700136311E60025FE6E /* PieChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F897D6FF136311E60025FE6E /* PieChartViewController.m */; };
@@ -293,6 +293,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = PlotCreator_Prefix.pch;
 				INFOPLIST_FILE = "PlotCreator-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = PlotCreator;
 				RUN_CLANG_STATIC_ANALYZER = YES;
 			};
@@ -307,6 +308,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = PlotCreator_Prefix.pch;
 				INFOPLIST_FILE = "PlotCreator-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = PlotCreator;
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				VALIDATE_PRODUCT = YES;

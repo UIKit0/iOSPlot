@@ -175,14 +175,32 @@
     if (self.subtitle)
     {
         CGRect textFrame = CGRectMake(self.frame.size.width/2-inner_circle_radius, self.frame.size.height-self.subtitleFont.pointSize-5, 2*inner_circle_radius, self.subtitleFont.pointSize);
-        [self.subtitle drawInRect:textFrame withFont:self.subtitleFont lineBreakMode:UILineBreakModeClip alignment:UITextAlignmentCenter];
         
+        @try {
+            [self.subtitle drawInRect:textFrame withFont:self.subtitleFont
+                        lineBreakMode:NSLineBreakByClipping
+                            alignment:NSTextAlignmentCenter];
+        }
+        @catch (NSException *exception) {
+            [self.subtitle drawInRect:textFrame withFont:self.subtitleFont
+                        lineBreakMode:UILineBreakModeClip
+                            alignment:UITextAlignmentCenter];
+        }
     }
     if (self.title)
     {
         CGRect textFrame = CGRectMake(self.frame.size.width/2-inner_circle_radius, self.frame.size.height-self.subtitleFont.pointSize-self.titleFont.pointSize-5, 2*inner_circle_radius, self.titleFont.pointSize);
-        [self.title drawInRect:textFrame withFont:self.titleFont lineBreakMode:UILineBreakModeClip alignment:UITextAlignmentCenter];
         
+        @try {
+            [self.title drawInRect:textFrame withFont:self.titleFont
+                     lineBreakMode:NSLineBreakByClipping
+                         alignment:NSTextAlignmentCenter];
+        }
+        @catch (NSException *exception) {
+            [self.title drawInRect:textFrame withFont:self.titleFont
+                     lineBreakMode:UILineBreakModeClip
+                         alignment:UITextAlignmentCenter];
+        }
     }
 }
 

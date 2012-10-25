@@ -110,18 +110,26 @@
 
         NSString *formatString = [NSString stringWithFormat:@"%%.%if", (power < 0) ? -power : 0];
         NSString *text = [NSString stringWithFormat:formatString, y_axis];
-
-        [text drawInRect:textFrame 
-				withFont:self.yLabelFont 
-		   lineBreakMode:UILineBreakModeWordWrap 
-			   alignment:UITextAlignmentRight];
-		
-		// These are "grid" lines
-        CGContextSetLineWidth(ctx, 1);
-        CGContextSetRGBStrokeColor(ctx, 0.4f, 0.4f, 0.4f, 0.1f);
-        CGContextMoveToPoint(ctx, 30, y);
-        CGContextAddLineToPoint(ctx, self.frame.size.width-30, y);
-        CGContextStrokePath(ctx);
+        
+        @try {
+            [text drawInRect:textFrame withFont:self.yLabelFont
+               lineBreakMode:NSLineBreakByWordWrapping
+                   alignment:NSTextAlignmentRight];
+        }
+        @catch (NSException *exception) {
+            [text drawInRect:textFrame
+                    withFont:self.yLabelFont
+               lineBreakMode:UILineBreakModeWordWrap
+                   alignment:UITextAlignmentRight];
+        }
+        @finally {
+            // These are "grid" lines
+            CGContextSetLineWidth(ctx, 1);
+            CGContextSetRGBStrokeColor(ctx, 0.4f, 0.4f, 0.4f, 0.1f);
+            CGContextMoveToPoint(ctx, 30, y);
+            CGContextAddLineToPoint(ctx, self.frame.size.width-30, y);
+            CGContextStrokePath(ctx);
+        }
     }
     
     float margin = 45;
@@ -141,10 +149,18 @@
             int x = (int) (margin + div_width * i);
             NSString *x_label = [NSString stringWithFormat:@"%@", [self.xLabels objectAtIndex:i]];
             CGRect textFrame = CGRectMake(x - 100, self.frame.size.height - x_label_height, 200, x_label_height);
-            [x_label drawInRect:textFrame
-                       withFont:self.xLabelFont
-                  lineBreakMode:UILineBreakModeWordWrap
-                      alignment:UITextAlignmentCenter];
+            
+            @try {
+                [x_label drawInRect:textFrame withFont:self.xLabelFont
+                      lineBreakMode:NSLineBreakByWordWrapping
+                          alignment:NSTextAlignmentCenter];
+            }
+            @catch (NSException *exception) {
+                [x_label drawInRect:textFrame
+                           withFont:self.xLabelFont
+                      lineBreakMode:UILineBreakModeWordWrap
+                          alignment:UITextAlignmentCenter];
+            }
         };
 
     }
@@ -245,33 +261,63 @@
 						CGContextSetRGBFillColor(ctx, 0.0f, 0.0f, 0.0f, 1.0f);
 						NSString *perc_label = [NSString stringWithFormat:[[self.components objectAtIndex:j] labelFormat], value];
 						CGRect textFrame = CGRectMake(x-25,y1, 50,20);
-						[perc_label drawInRect:textFrame 
-									  withFont:self.valueLabelFont 
-								 lineBreakMode:UILineBreakModeWordWrap 
-									 alignment:UITextAlignmentCenter];
-						y_level = y1 + 20;
+                        
+                        @try {
+                            [perc_label drawInRect:textFrame withFont:self.valueLabelFont
+                                     lineBreakMode:NSLineBreakByWordWrapping
+                                         alignment:NSTextAlignmentCenter];
+                        }
+                        @catch (NSException *exception) {
+                            [perc_label drawInRect:textFrame
+                                          withFont:self.valueLabelFont
+                                     lineBreakMode:UILineBreakModeWordWrap
+                                         alignment:UITextAlignmentCenter];
+                        }
+                        @finally {
+                            y_level = y1 + 20;
+                        }
 					}
 					else if (y2 < y_level+20 && y2 < self.frame.size.height-top_margin-bottom_margin)
 					{
 						CGContextSetRGBFillColor(ctx, 0.0f, 0.0f, 0.0f, 1.0f);
 						NSString *perc_label = [NSString stringWithFormat:[[self.components objectAtIndex:j] labelFormat], value];
 						CGRect textFrame = CGRectMake(x-25,y2, 50,20);
-						[perc_label drawInRect:textFrame 
-									  withFont:self.valueLabelFont 
-								 lineBreakMode:UILineBreakModeWordWrap 
-									 alignment:UITextAlignmentCenter];
-						y_level = y2 + 20;
+                        
+                        @try {
+                            [perc_label drawInRect:textFrame withFont:self.valueLabelFont
+                                     lineBreakMode:NSLineBreakByWordWrapping
+                                         alignment:NSTextAlignmentCenter];
+                        }
+                        @catch (NSException *exception) {
+                            [perc_label drawInRect:textFrame
+                                          withFont:self.valueLabelFont
+                                     lineBreakMode:UILineBreakModeWordWrap
+                                         alignment:UITextAlignmentCenter];
+                        }
+                        @finally {
+                            y_level = y2 + 20;
+                        }
 					}
 					else
 					{
 						CGContextSetRGBFillColor(ctx, 0.0f, 0.0f, 0.0f, 1.0f);
 						NSString *perc_label = [NSString stringWithFormat:[[self.components objectAtIndex:j] labelFormat], value];
 						CGRect textFrame = CGRectMake(x-50,y-10, 50,20);
-						[perc_label drawInRect:textFrame 
-									  withFont:self.valueLabelFont 
-								 lineBreakMode:UILineBreakModeWordWrap 
-									 alignment:UITextAlignmentCenter];
-						y_level = y1 + 20;
+                        
+                        @try {
+                            [perc_label drawInRect:textFrame withFont:self.valueLabelFont
+                                     lineBreakMode:NSLineBreakByWordWrapping
+                                         alignment:NSTextAlignmentCenter];
+                        }
+                        @catch (NSException *exception) {
+                            [perc_label drawInRect:textFrame
+                                          withFont:self.valueLabelFont
+                                     lineBreakMode:UILineBreakModeWordWrap
+                                         alignment:UITextAlignmentCenter];
+                        }
+                        @finally {
+                            y_level = y1 + 20;
+                        }
 					}
                 }
                 if (y+circle_diameter/2>y_level) y_level = y+circle_diameter/2;
