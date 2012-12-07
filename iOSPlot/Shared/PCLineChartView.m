@@ -49,6 +49,26 @@
 
 @implementation PCLineChartView
 
+- (id) initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        // Initialization code
+        
+        [self setBackgroundColor:[UIColor clearColor]];
+        _interval = 20;
+		_maxValue = 100;
+		_minValue = 0;
+		_yLabelFont = [UIFont boldSystemFontOfSize:14];
+		_xLabelFont = [UIFont boldSystemFontOfSize:12];
+		_valueLabelFont = [UIFont boldSystemFontOfSize:10];
+		_legendFont = [UIFont boldSystemFontOfSize:10];
+        _numYIntervals = 5;
+        _numXIntervals = 1;
+		
+    }
+    return self;    
+}
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -113,8 +133,8 @@
 
         [text drawInRect:textFrame 
 				withFont:self.yLabelFont 
-		   lineBreakMode:UILineBreakModeWordWrap 
-			   alignment:UITextAlignmentRight];
+		   lineBreakMode:NSLineBreakByWordWrapping 
+			   alignment:NSTextAlignmentRight];
 		
 		// These are "grid" lines
         CGContextSetLineWidth(ctx, 1);
@@ -143,8 +163,8 @@
             CGRect textFrame = CGRectMake(x - 100, self.frame.size.height - x_label_height, 200, x_label_height);
             [x_label drawInRect:textFrame
                        withFont:self.xLabelFont
-                  lineBreakMode:UILineBreakModeWordWrap
-                      alignment:UITextAlignmentCenter];
+                  lineBreakMode:NSLineBreakByWordWrapping
+                      alignment:NSTextAlignmentCenter];
         };
 
     }
@@ -247,8 +267,8 @@
 						CGRect textFrame = CGRectMake(x-25,y1, 50,20);
 						[perc_label drawInRect:textFrame 
 									  withFont:self.valueLabelFont 
-								 lineBreakMode:UILineBreakModeWordWrap 
-									 alignment:UITextAlignmentCenter];
+								 lineBreakMode:NSLineBreakByWordWrapping 
+									 alignment:NSTextAlignmentCenter];
 						y_level = y1 + 20;
 					}
 					else if (y2 < y_level+20 && y2 < self.frame.size.height-top_margin-bottom_margin)
@@ -258,8 +278,8 @@
 						CGRect textFrame = CGRectMake(x-25,y2, 50,20);
 						[perc_label drawInRect:textFrame 
 									  withFont:self.valueLabelFont 
-								 lineBreakMode:UILineBreakModeWordWrap 
-									 alignment:UITextAlignmentCenter];
+								 lineBreakMode:NSLineBreakByWordWrapping 
+									 alignment:NSTextAlignmentCenter];
 						y_level = y2 + 20;
 					}
 					else
@@ -269,8 +289,8 @@
 						CGRect textFrame = CGRectMake(x-50,y-10, 50,20);
 						[perc_label drawInRect:textFrame 
 									  withFont:self.valueLabelFont 
-								 lineBreakMode:UILineBreakModeWordWrap 
-									 alignment:UITextAlignmentCenter];
+								 lineBreakMode:NSLineBreakByWordWrapping 
+									 alignment:NSTextAlignmentCenter];
 						y_level = y1 + 20;
 					}
                 }
